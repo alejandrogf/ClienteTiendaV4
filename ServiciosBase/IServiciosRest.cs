@@ -18,6 +18,6 @@ namespace ServiciosBase
 
         List<TModelo> Get(Dictionary<String, String> parametro);
 
-        List<TModelo> Get(int id);
+        TModelo Get(int id);
     }
 }

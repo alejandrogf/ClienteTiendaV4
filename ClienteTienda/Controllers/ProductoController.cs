@@ -3,36 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ServiciosBase;
 using ClienteTienda.Models;
 using Microsoft.Practices.Unity;
+using ServiciosBase;
 
 namespace ClienteTienda.Controllers
 {
-    public class CategoriasController : Controller
+    
+    public class ProductoController : Controller
     {
-       [Dependency]
-        public IServiciosRest<Categorias> Servicio { get; set; }
-        // GET: Categorias
-        public ActionResult Index()
+        [Dependency]
+        public IServiciosRest<Producto> Servicio { get; set; }
+        // GET: Producto
+        public ActionResult Index(int id)
         {
-            var data = Servicio.Get();
+            var data = Servicio.Get(id);
             return View(data);
         }
 
-        // GET: Categorias/Details/5
+        // GET: Producto/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Categorias/Create
+        // GET: Producto/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Categorias/Create
+        // POST: Producto/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -48,13 +49,13 @@ namespace ClienteTienda.Controllers
             }
         }
 
-        // GET: Categorias/Edit/5
+        // GET: Producto/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Categorias/Edit/5
+        // POST: Producto/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -70,13 +71,13 @@ namespace ClienteTienda.Controllers
             }
         }
 
-        // GET: Categorias/Delete/5
+        // GET: Producto/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Categorias/Delete/5
+        // POST: Producto/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

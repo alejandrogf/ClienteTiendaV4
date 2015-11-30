@@ -36,8 +36,11 @@ namespace ClienteTienda.App_Start
         {
             // NOTE: To load from web.config uncomment the line below. Make sure to add a Microsoft.Practices.Unity.Configuration to the using statements.
             // container.LoadConfiguration();
-            container.RegisterType<IServiciosRest<Categorias>, ServicioRestImpl<Categorias>>
-    (new InjectionConstructor("http://localhost:49289/api/Categorias", false, "", ""));
+            //Cada vista/controller creado hay que informarlo aquí
+            container.RegisterType<IServiciosRest<Categoria>, ServicioRestImpl<Categoria>>
+    (new InjectionConstructor("http://localhost:49289/api/Categoria", false, "", ""));
+            container.RegisterType<IServiciosRest<Producto>, ServicioRestImpl<Producto>>
+(new InjectionConstructor("http://localhost:49289/api/Producto", false, "", ""));
             // TODO: Register your types here
             // container.RegisterType<IProductRepository, ProductRepository>();
         }

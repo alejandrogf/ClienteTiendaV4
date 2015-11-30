@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using ClienteTienda.App_Start;
 
 namespace ClienteTienda
 {
@@ -13,6 +14,7 @@ namespace ClienteTienda
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            UnityWebActivator.Start();
         }
     }
 }

@@ -170,35 +170,36 @@ namespace ServiciosBase
             return Get(parametrosurl);
         }
 
-        public List<TModelo> Get(int id)
+        //public List<TModelo> Get(int id)
+        public TModelo Get(int id)
         {
-            var parametrosurl = "";
-            parametrosurl += "/" + id;
-            return Get(parametrosurl);
+            //var parametrosurl = "";
+            //parametrosurl += "/" + id;
+            //return Get(parametrosurl);
 
-            //TModelo objeto;
-            ////webrequest siempre es con método GET.
-            //var request = WebRequest.Create(url + "/" + id);
-            //if (auth)
-            //{
-            //    request.Credentials = new NetworkCredential(user, pass);
-            //}
-            //request.Method = "GET";
-            //var response = request.GetResponse();
-            ////stream es el canal de comunicacion/flujo de datos que se abre entre aplicaciones
-            ////que dentro lleva ya la respuesta. De base la información viaja como bytes
-            //using (var stream = response.GetResponseStream())
-            //{
-            //    //reader permite leer datos del stream. 
-            //    //Streamreader transforma él solo de bytes a texto
-            //    using (var reader = new StreamReader(stream))
-            //    {
-            //        var serializado = reader.ReadToEnd();
-            //        //transforma el texto en una lista de objetos para trabajar con ella.
-            //        objeto = Serializacion<TModelo>.Deserializar(serializado);
-            //    }
-            //}
-            //return objeto;
+            TModelo objeto;
+            //webrequest siempre es con método GET.
+            var request = WebRequest.Create(url + "/" + id);
+            if (auth)
+            {
+                request.Credentials = new NetworkCredential(user, pass);
+            }
+            request.Method = "GET";
+            var response = request.GetResponse();
+            //stream es el canal de comunicacion/flujo de datos que se abre entre aplicaciones
+            //que dentro lleva ya la respuesta. De base la información viaja como bytes
+            using (var stream = response.GetResponseStream())
+            {
+                //reader permite leer datos del stream. 
+                //Streamreader transforma él solo de bytes a texto
+                using (var reader = new StreamReader(stream))
+                {
+                    var serializado = reader.ReadToEnd();
+                    //transforma el texto en una lista de objetos para trabajar con ella.
+                    objeto = Serializacion<TModelo>.Deserializar(serializado);
+                }
+            }
+            return objeto;
         }
     }
 }
